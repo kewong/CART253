@@ -1,5 +1,10 @@
-final int CIRCLE_SPEED = 7; //  integer of 7
-final color NO_CLICK_FILL_COLOR = color(250, 100, 100); // integer of color set as default color of the circle
+float red = random(255);
+float green = random(255);
+float blue = random(255);
+final color NO_CLICK_FILL_COLOR = color(red,green,blue); 
+// generates a random color every time the program starts up
+final int CIRCLE_SPEED = 7; 
+//  integer of 7
 final color CLICK_FILL_COLOR = color(100, 100, 250); 
 // integer of color set to change when mouse's coordinates interact with the circle
 final color BACKGROUND_COLOR = color(250, 150, 150); 
@@ -29,7 +34,7 @@ void setup() {
   // the circle's velocity rate along the y-axis is 7
   stroke(STROKE_COLOR); 
   // the color of the outine of the circle
-  fill(NO_CLICK_FILL_COLOR); 
+  fill(STROKE_COLOR); 
   // the color of the circle
   background(BACKGROUND_COLOR); 
   // background color
@@ -52,11 +57,15 @@ void draw() {
 
   if (circleX + CIRCLE_SIZE/2 > width || circleX - CIRCLE_SIZE/2 < 0) { 
     circleVX = -circleVX; 
-    // if the circle's central point reaches a distance of its radius from either side of the screen along the x-axis the circle will "bounce off" in the opposite direction
+    background(NO_CLICK_FILL_COLOR);
+    // if the circle's central point reaches a distance of its radius from either side of the screen along the x-axis the circle will "bounce off" in the opposite 
+    // direction while resetting and changing the color of the background
   }
   if (circleY + CIRCLE_SIZE/2 > height || circleY - CIRCLE_SIZE/2 < 0) { 
-    circleVY = -circleVY; 
-    // if the circle's central point reaches a distance of it's radius from either side of the screen along the y-axis the circle will "bounce off" in the opposite direction
+    circleVY = -circleVY;
+    background(NO_CLICK_FILL_COLOR);
+    // if the circle's central point reaches a distance of it's radius from either side of the screen along the y-axis the circle will "bounce off" in the opposite 
+    // direction while resetting and changing the color of the background
   }
 }
 
