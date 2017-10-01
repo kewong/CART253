@@ -10,8 +10,6 @@ color staticColor = color(200);
 int paddleX;
 int paddleY;
 int paddleVX;
-int paddleVY;
-// CHANGED allowed the paddle to move up and down the y-axis by adding the paddleVY integer
 
 int paddleSpeed = 10;
 int paddleWidth = 128;
@@ -35,16 +33,13 @@ void setup() {
   
   setupPaddle();
   setupBall();
- background(backgroundColor);
 }
 
 void setupPaddle() {
   paddleX = width/2;
   paddleY = height - paddleHeight;
   paddleVX = 0;
-  paddleVY = 0;
   // this will tell the program where to set up the paddle
-  // CHANGED added a value to paddleVY
 }
 
 void setupBall() {
@@ -56,7 +51,7 @@ void setupBall() {
 }
 
 void draw() {
-  // CHANGED the background was removed, letting the black background to  slowly fade away from the static.
+  background(backgroundColor);
 
   drawStatic();
 
@@ -81,9 +76,6 @@ void drawStatic() {
 void updatePaddle() {
  paddleX += paddleVX;  
  paddleX = constrain(paddleX,0+paddleWidth/2,width-paddleWidth/2);
- 
- paddleY += paddleVY;
- paddleY = constrain(paddleY,0+paddleHeight/2,height-paddleHeight/2);
  // this function allows the paddle to move, constraining the paddle within the screen
 }
 
@@ -117,9 +109,7 @@ void handleBallHitPaddle() {
   if (ballOverlapsPaddle()) {
     ballY = paddleY - paddleHeight/2 - ballSize/2;
     ballVY = -ballVY;
-    background(backgroundColor);
     // if the ball hits the paddle, the ball will "bounce off"
-    // CHANGED the background will reset to black whenever the ball comes in contact with the paddle
   }
 }
 
@@ -170,12 +160,6 @@ void keyPressed() {
   } else if (keyCode == RIGHT) {
     paddleVX = paddleSpeed;
     // if the right key is pressed, the "paddle" will move up the x-axis, increasing towards the highest number
-  } else if (keyCode == UP) {
-   paddleVY = -paddleSpeed; 
-   // CHANGED the paddle will move up the screen when the UP key is pressed
-  } else if (keyCode == DOWN) {
-   paddleVY = paddleSpeed; 
-   // CHANGED the paddle will move down the screen when the DOWN key is pressed
   }
 }
 
@@ -186,11 +170,5 @@ void keyReleased() {
   } else if (keyCode == RIGHT && paddleVX > 0) {
     paddleVX = 0;
     // if the right key is released, the "paddle" will stop moving
-  } else if (keyCode == UP && paddleVY < 0) {
-   paddleVY = 0; 
-   // CHANGED the paddle will stop moving when the UP key is released
-  } else if (keyCode == DOWN && paddleVY > 0) {
-   paddleVY = 0; 
-   // CHANGED the paddle will stop moving when the DOWN key is released
   }
 }
