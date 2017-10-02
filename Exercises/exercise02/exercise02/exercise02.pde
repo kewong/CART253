@@ -58,16 +58,17 @@ void setupBall() {
 
 void draw() {
   // the background was removed, letting the black background to  slowly fade away from the static.
-
   drawStatic();
+  
   drawNewBackground();
+  
   updatePaddle();
   updateBall();
   drawPaddle();
   drawBall();
 }
 
-// CHANGED created new function that holds a loop which creates a different background on the upper half of the screen
+// created new function that holds a loop which creates a different background on the upper half of the screen
 void drawNewBackground() {
   for (int i = 0; i < width; i++) {
     float r = random(255);
@@ -97,6 +98,7 @@ void updatePaddle() {
 }
 
 // this allows the ball to move diagonally
+// CHANGED updateBallColor() was added into the updateBall() function to update the color of the ball
 void updateBall() {
   ballX += ballVX;
   ballY += ballVY;
@@ -104,6 +106,7 @@ void updateBall() {
   handleBallHitPaddle();
   handleBallHitWall();
   handleBallOffBottom();
+  updateBallColor();
 }
 
 // this allows the paddle to appear on the screen
@@ -209,5 +212,16 @@ void keyReleased() {
     // the paddle will stop moving when the DOWN key is released
   } else if (keyCode == DOWN && paddleVY > 0) {
     paddleVY = 0;
+  }
+}
+
+// CHANGED this function was created to change the color of the ball from black to white/white to black 
+  // depending on whether it is located on the upper half or lower half of the screen
+void updateBallColor() {
+ if(ballY < height/2) {
+  ballColor = (0);
+ }
+ else if(ballY > height/2){
+   ballColor = (255);
   }
 }
