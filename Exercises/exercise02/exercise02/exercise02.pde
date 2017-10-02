@@ -11,7 +11,7 @@ int paddleX;
 int paddleY;
 int paddleVX;
 int paddleVY;
-// CHANGED allowed the paddle to move up and down the y-axis by adding the paddleVY integer
+// allowed the paddle to move up and down the y-axis by adding the paddleVY integer
 
 // these are the settings for the paddle's speed, size, and color
 int paddleSpeed = 10;
@@ -33,11 +33,11 @@ color ballColor = color(255);
 void setup() {
   // The screen's size is 640 pixels by 480 pixels
   size(640, 480);
-
   setupPaddle();
   setupBall();
   background(backgroundColor);
 }
+
 
 // this will tell the program where to set up the paddle
 void setupPaddle() {
@@ -45,7 +45,7 @@ void setupPaddle() {
   paddleY = height - paddleHeight;
   paddleVX = 0;
   paddleVY = 0;
-  // CHANGED added a value to paddleVY
+  // added a value to paddleVY
 }
 
 // this will tell the program where to set up the ball and which direction it will go
@@ -57,15 +57,23 @@ void setupBall() {
 }
 
 void draw() {
-  // CHANGED the background was removed, letting the black background to  slowly fade away from the static.
+  // the background was removed, letting the black background to  slowly fade away from the static.
 
   drawStatic();
-
+  drawNewBackground();
   updatePaddle();
   updateBall();
-
   drawPaddle();
   drawBall();
+}
+
+// CHANGED created new function that holds a loop which creates a different background on the upper half of the screen
+void drawNewBackground() {
+  for (int i = 0; i < width; i++) {
+    float r = random(255);
+    stroke(r);
+    line(i, 0, i, r);
+  }
 }
 
 // this allows the static to appear on the screen
@@ -115,9 +123,9 @@ void drawBall() {
 }
 
 // if the ball hits the paddle, the ball will "bounce off"
-// CHANGED the background will reset to black whenever the ball comes in contact with the paddle
-// CHANGED the ball will become smaller every time it hits the paddle
-// CHANGED the paddle will become bigger every time the ball hits it
+// the background will reset to black whenever the ball comes in contact with the paddle
+// the ball will become smaller every time it hits the paddle
+// the paddle will become bigger every time the ball hits it
 void handleBallHitPaddle() {
   if (ballOverlapsPaddle()) {
     ballY = paddleY - paddleHeight/2 - ballSize/2;
@@ -139,8 +147,8 @@ boolean ballOverlapsPaddle() {
   return false;
 }
 
-// CHANGED the ball will become bigger every time it misses the paddle
-// CHANGED the paddle will become smaller every time the ball misses it
+//  the ball will become bigger every time it misses the paddle
+//  the paddle will become smaller every time the ball misses it
 void handleBallOffBottom() {
   if (ballOffBottom()) {
     ballX = width/2;
@@ -179,10 +187,10 @@ void keyPressed() {
     // if the right key is pressed, the "paddle" will move up the x-axis, increasing towards the highest number
   } else if (keyCode == RIGHT) {
     paddleVX = paddleSpeed;
-    // CHANGED the paddle will move up the screen when the UP key is pressed
+    // the paddle will move up the screen when the UP key is pressed
   } else if (keyCode == UP) {
     paddleVY = -paddleSpeed; 
-    // CHANGED the paddle will move down the screen when the DOWN key is pressed
+    // the paddle will move down the screen when the DOWN key is pressed
   } else if (keyCode == DOWN) {
     paddleVY = paddleSpeed;
   }
@@ -195,10 +203,10 @@ void keyReleased() {
     // if the right key is released, the "paddle" will stop moving
   } else if (keyCode == RIGHT && paddleVX > 0) {
     paddleVX = 0;
-    // CHANGED the paddle will stop moving when the UP key is released
+    // the paddle will stop moving when the UP key is released
   } else if (keyCode == UP && paddleVY < 0) {
     paddleVY = 0; 
-    // CHANGED the paddle will stop moving when the DOWN key is released
+    // the paddle will stop moving when the DOWN key is released
   } else if (keyCode == DOWN && paddleVY > 0) {
     paddleVY = 0;
   }
