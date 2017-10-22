@@ -21,6 +21,7 @@ void setup() {
   frameRate(10);
 
   // QUESTION: What does this for loop do?
+  // ANSWER: This allows the griddies to appear in different areas of the screen
   for (int i = 0; i < griddies.length; i++) {
     int x = floor(random(0, width/gridSize));
     int y = floor(random(0, height/gridSize));
@@ -44,8 +45,10 @@ void draw() {
     // Now go through all the griddies a second time...
     for (int j = 0; j < griddies.length; j++) {
       // QUESTION: What is this if-statement for?
+      // ANSWER: it is commanded if the second round of griddies are inequal to the first round of griddies
       if (j != i) {
         // QUESTION: What does this line check?
+        // ANSWER: This line checks whether any of the griddies collide with one another
         griddies[i].collide(griddies[j]);
       }
     }

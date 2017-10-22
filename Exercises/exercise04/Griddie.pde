@@ -35,17 +35,20 @@ class Griddie {
   void update() {
     
     // QUESTION: What is this if-statement for?
+    // ANSWER: If the griddie's opacity/ the energy = 0, then the program will break out of the update() function
     if (energy == 0) {
       return;
     }
     
     // QUESTION: How does the Griddie movement updating work?
+    // ANSWER: The griddies move to random locations and sizes
     int xMoveType = floor(random(-1,2));
     int yMoveType = floor(random(-1,2));
     x += size * xMoveType;
     y += size * yMoveType;
     
     // QUESTION: What are these if statements doing?
+    // ANSWER: They are allowing the griddie's sizes to randomly change
     if (x < 0) {
       x += width;
     }
@@ -74,11 +77,13 @@ class Griddie {
   
   void collide(Griddie other) {
     // QUESTION: What is this if-statement for?
+    // ANSWER: if thhis statement is true, skip the if-statement below
     if (energy == 0 || other.energy == 0) {
       return;
     }
     
     // QUESTION: What does this if-statement check?
+    // ANSWER: If any griddies align with one another
     if (x == other.x && y == other.y) {
       // Increase this Griddie's energy
       energy += collideEnergy;
@@ -92,6 +97,7 @@ class Griddie {
   // Draw the Griddie on the screen as a rectangle
   void display() {
     // QUESTION: What does this fill line do?
+    // ANSWER: The fill is the color of the griddies and the energy is its opacity.
     fill(fill, energy); 
     noStroke();
     rect(x, y, size, size);
