@@ -49,6 +49,10 @@ void draw() {
     // Update the griddies
     griddies[i].update();
 
+    // CHANGED
+    // Draw function checks whenever the griddles and the snake's points align
+    snake.collide(griddies[i]);
+
 
     // Now go through all the griddies a second time...
     for (int j = 0; j < griddies.length; j++) {
@@ -64,7 +68,8 @@ void draw() {
     // Display the griddies
     griddies[i].display();
   }
-
+  // CHANGED 
+  // Displays the snake
   snake.display();
   snake.update();
 }
