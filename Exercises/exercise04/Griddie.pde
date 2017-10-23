@@ -10,13 +10,13 @@ class Griddie {
   int maxEnergy = 255;
   int moveEnergy = -1;
   int collideEnergy = 10;
-  
+
   // Position, size, energy, and fill color
   int x;
   int y;
   int size;
   int energy;
-  color fill = color(255,0,0);
+  color fill = color(255, 0, 0);
 
   // Griddie(tempX, tempY, tempSize)
   //
@@ -33,62 +33,60 @@ class Griddie {
   //
   // Move the Griddie and update its energy levels
   void update() {
-    
+
     // QUESTION: What is this if-statement for?
     // ANSWER: If the griddie's opacity/ the energy = 0, then the program will break out of the update() function
     if (energy == 0) {
       return;
     }
-    
+
     // QUESTION: How does the Griddie movement updating work?
     // ANSWER: The griddies move to random locations and sizes
-    int xMoveType = floor(random(-1,2));
-    int yMoveType = floor(random(-1,2));
+    int xMoveType = floor(random(-1, 2));
+    int yMoveType = floor(random(-1, 2));
     x += size * xMoveType;
     y += size * yMoveType;
-    
+
     // QUESTION: What are these if statements doing?
     // ANSWER: They are allowing the griddie's sizes to randomly change
     if (x < 0) {
       x += width;
-    }
-    else if (x >= width) {
+    } else if (x >= width) {
       x -= width;
     }
     if (y < 0) {
       y += height;
-    }
-    else if (y >= height) {
+    } else if (y >= height) {
       y -= height;
     }
 
     // Update the Griddie's energy
     // Note that moveEnergy is negative, so this _loses_ energy
     energy += moveEnergy;
-    
+
     // Constrain the Griddies energy level to be within the defined bounds
-    energy = constrain(energy,0,maxEnergy);
+    energy = constrain(energy, 0, maxEnergy);
   }
 
   // collide(other)
   //
   // Checks for collision with the other Griddie
   // and updates energy level
-  
+
   void collide(Griddie other) {
     // QUESTION: What is this if-statement for?
     // ANSWER: if thhis statement is true, skip the if-statement below
     if (energy == 0 || other.energy == 0) {
       return;
     }
-    
+
     // QUESTION: What does this if-statement check?
     // ANSWER: If any griddies align with one another
     if (x == other.x && y == other.y) {
       // Increase this Griddie's energy
       energy += collideEnergy;
       // Constrain the energy level to be within bounds
-      energy = constrain(energy,0,maxEnergy);
+      energy = constrain(energy, 0, maxEnergy);
     }
   }
 
