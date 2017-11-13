@@ -1,7 +1,7 @@
 // The bouncer's settings will be made in this tab
 // the bouncer will act as a sound base, where the user can make the tempo faster or slower
 
-class Bouncer {
+class Tempo {
 
   int x;
   int y;
@@ -14,7 +14,7 @@ class Bouncer {
 
   color ballColor = color(255);
 
-  Bouncer(int _x, int _y) {
+  Tempo(int _x, int _y) {
     x = _x;
     y = _y;
     vx = SPEED;
@@ -40,23 +40,17 @@ class Bouncer {
     }
   }
 
-  //CHANGED the ball will appear with these settings
-  void display() {
-    //CHANGED Set-up of the appearance of the ball
-    noStroke();
-    fill(ballColor);
-    rectMode(CENTER);
-    rect(x, y, SIZE, SIZE);
-  }
   //CHANGED trying to make the ball move faster and slower with the up and down keys
   void keyPressed() {
-    if (key == UP) {
-      vx = SPEED+5;
-      vy = SPEED+5;
-    } 
-    if (key == DOWN) {
-      vx = SPEED-5;
-      vy = SPEED-5;
+    if (keyCode == CODED) {
+      if (keyCode == UP) {
+        vx = vx+5;
+        vy = vy+5;
+      }
+    } else if(keyCode == DOWN) {
+        vx = vx-5;
+        vy = vy-5;
+      
     }
   }
   //  void keyReleased() {
@@ -69,4 +63,13 @@ class Bouncer {
   //   vy = vy;
   //  }
   //}
+
+  //CHANGED the ball will appear with these settings
+  void display() {
+    //CHANGED Set-up of the appearance of the ball
+    noStroke();
+    fill(ballColor);
+    rectMode(CENTER);
+    rect(x, y, SIZE, SIZE);
+  }
 }

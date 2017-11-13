@@ -1,7 +1,11 @@
 import processing.sound.*;
 SoundFile stereoSound;
 
-Bouncer bouncer;
+Tempo tempo;
+
+
+//Beats beats;
+
 
 void setup() {
 
@@ -9,7 +13,9 @@ void setup() {
   background(80);
 
   //CHANGED created a ball that will bounce within the screen
-  bouncer = new Bouncer(width/2, height/2);
+  tempo = new Tempo(width/2, height/2);
+
+//beats = new Beats(); 
 
   // CHANGED added a sound to the code that will serve as a sound tempo
   stereoSound = new SoundFile(this, "tempo_ball.mp3");
@@ -18,8 +24,9 @@ void setup() {
 // CHANGED drawing the background and the bouncer onto the screen with its update settings
 void draw() {
   background(80);
-  bouncer.display();
-  bouncer.update();
+  tempo.display();
+  tempo.update();
+
 }
 
 //void mouseClicked() {
@@ -27,5 +34,6 @@ void draw() {
 //}
 
 void keyPressed() {
-  bouncer.keyPressed();
+    tempo.keyPressed();
+ // beats.keyPressed();
 }
