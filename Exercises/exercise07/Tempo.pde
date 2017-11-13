@@ -31,7 +31,7 @@ class Tempo {
       //CHANGED If it is, then it will "bounce" by reversing its velocity
       vy = -vy;
       //CHANGED whenever the ball hits the top or bottom walls, it sounds as though the imapct made a banging sound
-      stereoSound.loop();
+      tempoSound.loop();
     }
     // CHANGED checks if the ball is going off the right or left sides
     if (x - SIZE/2 < 0 || x + SIZE/2 > width) {
