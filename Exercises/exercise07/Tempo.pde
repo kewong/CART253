@@ -47,10 +47,9 @@ class Tempo {
         vx = vx+5;
         vy = vy+5;
       }
-    } else if(keyCode == DOWN) {
-        vx = vx-5;
-        vy = vy-5;
-      
+    } else if (keyCode == DOWN) {
+      vx = vx-5;
+      vy = vy-5;
     }
   }
   //  void keyReleased() {

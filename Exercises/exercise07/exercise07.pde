@@ -58,7 +58,7 @@ void draw() {
   textSize(50);
   fill(200, 80, 100);
   text("press T", 220, 280);
-  
+
   textSize(50);
   fill(200, 80, 100);
   text("press Y", 220, 360);
