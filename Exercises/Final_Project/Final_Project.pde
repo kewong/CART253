@@ -13,6 +13,8 @@ FFT fft;
 
 Wave wave;
 
+Box box;
+
 void setup() {
   //CHANGED the program goes to fullscreen when it starts up
   fullScreen();
@@ -22,6 +24,8 @@ void setup() {
   background(0);
 
   wave = new Wave();
+  
+  box = new Box();
 
   minim = new Minim(this);
 
@@ -36,4 +40,7 @@ void draw() {
   stroke(255);
 
   wave.display();
+  
+  box.display();
+  box.update();
 }
