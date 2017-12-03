@@ -9,27 +9,39 @@ class Box {
   int x;
   int y;
 
-  float tempWidth;
+  int tempWidth;
   float tempHeight;
 
+  //CHANGED added constructor
+  Box(int _x, int _y, int _tempWidth, float _tempHeight) {
+    x = _x;
+    y = _y;
+    tempWidth = _tempWidth;
+    tempHeight = _tempHeight;
+  }
+
+  //  void setup() {
+  //  }
+
   void update() {
-    
-    //CHANGED the size of the box will vary in size and will regenerate at random dimensions
-    tempWidth = random(100, 1600);
-    tempHeight = random(20, 1000);
+
+    //CHANGED the box will regenerate once every second
+    //frameRate(1);
+
+    // CHANGED trying to make the boxes move across the screen from left to right
+    // I know this is definitely not right..
+    if (tempWidth < 0 ) {
+      x++;
+    }
   }
 
   void display() {
-    
-    x = width/2;
-    y = height/2;
-    
+
     //CHANGED the box will be transparent, only the borders will show on the screen
     noFill();
     stroke(0, 255, 0);
     //CHANGED the rectangle will appear in the middle of the screen
     rectMode(CENTER);
     rect(x, y, tempWidth, tempHeight);
-    
   }
 }

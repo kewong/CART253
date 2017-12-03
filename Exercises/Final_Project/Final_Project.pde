@@ -13,7 +13,10 @@ FFT fft;
 
 Wave wave;
 
-Box box;
+Box[] box = new Box[100];
+
+//Counter hitCounter;
+//Counter missCounter;
 
 void setup() {
   //CHANGED the program goes to fullscreen when it starts up
@@ -24,8 +27,7 @@ void setup() {
   background(0);
 
   wave = new Wave();
-  
-  box = new Box();
+
 
   minim = new Minim(this);
 
@@ -40,7 +42,13 @@ void draw() {
   stroke(255);
 
   wave.display();
-  
-  box.display();
-  box.update();
+
+  //CHANGED made an array of boxes of random heights
+  for (int i = 0; i < box.length; i++) {
+    box[i] = new Box(0 - width/2, height/2, 500, random(20, 1000));
+    box[i].display();
+    box[i].update();
+  }
+
+  //pointCounter.display();
 }

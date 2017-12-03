@@ -19,7 +19,7 @@ class Wave {
       //CHANGED the color that filled the wave to black, creating a linear-type of wave
       fill(0);
       //CHANGED the size, shape, and the sensitivity of the wave's reaction to sound frequency
-      ellipse(width/2, height/2, 400, fft.getBand(i) * 50);
+      ellipse(width/2, height/2, 400, fft.getBand(i) * 200);
     }
   }
 }
