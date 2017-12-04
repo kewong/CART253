@@ -15,7 +15,7 @@ Wave wave;
 
 Box[] box = new Box[100];
 
-//Counter hitCounter;
+Counter hitCounter;
 //Counter missCounter;
 
 void setup() {
@@ -25,6 +25,8 @@ void setup() {
   noCursor();
 
   background(0);
+  
+  hitCounter = new Counter(200, 200, 255);
 
   wave = new Wave();
 
@@ -45,10 +47,10 @@ void draw() {
 
   //CHANGED made an array of boxes of random heights
   for (int i = 0; i < box.length; i++) {
-    box[i] = new Box(0 - width/2, height/2, 500, random(20, 1000));
+    box[i] = new Box(width/2, height/2, 0, 0, random(500, 2000), random(20, 1000));
     box[i].display();
     box[i].update();
   }
 
-  //pointCounter.display();
+  hitCounter.display();
 }

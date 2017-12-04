@@ -9,13 +9,18 @@ class Box {
   int x;
   int y;
 
-  int tempWidth;
+  int vx;
+  int vy;
+
+  float tempWidth;
   float tempHeight;
 
   //CHANGED added constructor
-  Box(int _x, int _y, int _tempWidth, float _tempHeight) {
+  Box(int _x, int _y, int _vx, int _vy, float _tempWidth, float _tempHeight) {
     x = _x;
     y = _y;
+    vx = _vx;
+    vy = _vy;
     tempWidth = _tempWidth;
     tempHeight = _tempHeight;
   }
@@ -30,8 +35,9 @@ class Box {
 
     // CHANGED trying to make the boxes move across the screen from left to right
     // I know this is definitely not right..
-    if (tempWidth < 0 ) {
-      x++;
+
+    for (int i = 0; i <= width; i++) {
+      vx++;
     }
   }
 
