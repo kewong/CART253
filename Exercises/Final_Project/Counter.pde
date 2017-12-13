@@ -17,8 +17,8 @@ class Counter {
 
 
 // CHANGED added a constructor for the counters
-  Counter(int newX, int newY, int _counterColor ) {
-    value = 0;
+  Counter(int newX, int newY, int _counterColor, int _value ) {
+    value = _value;
     x = newX;
     y = newY;
     counterColor = _counterColor;
@@ -29,7 +29,7 @@ class Counter {
 
 
   void display() {
-    fill(255);
+    fill(counterColor);
     textSize(100);
     text(value, x, y);
   }

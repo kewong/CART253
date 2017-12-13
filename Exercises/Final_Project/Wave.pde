@@ -20,6 +20,7 @@ class Wave {
 
 
   void display() {
+    largestHeight=0;
     // CHANGED analyzes the information recieved from the microphone
     fft.forward(input.mix);
     // CHANGED modified the soundwave to look like a circle
@@ -36,15 +37,17 @@ class Wave {
       ellipse(ellipseX, ellipseY, ellipseW, fft.getBand(i) * 100);
     }
   }
-// CHANGED this boolean becomes true when the height of the wave matches the height of the box
+  // CHANGED this boolean becomes true when the height of the wave matches the height of the box
   boolean checkCollision(Box b)
   {
     // CHANGED checks if the wave is inside the box
     if (ellipseX-ellipseW/2 > b.x-b.tempWidth/2 && ellipseX+ellipseW/2 < b.x+b.tempWidth/2 )
     {
       // CHANGED checks if the wave's height comes into contact with the height of the box
-      if (ellipseY-largestHeight/2 > (b.y-b.tempHeight/2)-15 && ellipseY-largestHeight/2 < (b.y-b.tempHeight/2)+15)
+      if (ellipseY-largestHeight/2 > (b.y-b.tempHeight/2)-15 && ellipseY-largestHeight/2 < (b.y-b.tempHeight/2)+30)
       {
+        hitCounter.value++;
+        b.boxHit =true;
         // CHANGED If both if statements are true, the boolean will return true
         return true;
       }

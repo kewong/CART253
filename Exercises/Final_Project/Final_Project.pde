@@ -32,10 +32,12 @@ Counter hitCounter;
 // CHANGED missCounter will count down from the amount of boxes the player misses 
 Counter missCounter;
 
+// CHANGED this determines that the game is not over
+boolean gameOver = false;
+
 
 
 //////// SETUP ////////
-
 
 
 
@@ -48,8 +50,8 @@ void setup() {
   background(0);
 
   // CHANGED this determines the placement and color of the two counters
-  hitCounter = new Counter(200, 200, 255);
-  missCounter = new Counter(200, 300, 255);
+  hitCounter = new Counter(200, 200, color(255), 0);
+  missCounter = new Counter(200, 300, color(255, 0, 0), 5);
 
   wave = new Wave();
 
@@ -66,7 +68,7 @@ void setup() {
   int interval = 10000;
   for (int i = 0; i < 100; i++) {
     float w =random(500, 2000);
-    box[i] = new Box(-int(w/2), height/2, 0, 0, w, random(20, 1000), interval*(i+1));
+    box[i] = new Box(-(int(w/2)+10), height/2, 0, 0, w, random(20, 1000), interval*(i+1));
   }
 }
 
@@ -76,25 +78,49 @@ void draw() {
   background(0);
   stroke(255);
 
-  // CHANGED display the wave on the screen
-  wave.display();
+// CHANGED the game will run the code below if gameOver is false
+  if (gameOver == false) {
+    wave.display();
 
-  //CHANGED made an array of boxes of random heights
-  for (int i = 0; i < box.length; i++) {
-    box[i].display();
-    box[i].update();
-    // CHANGED checks if the height of the wave matches the height of the box
-    if (wave.checkCollision(box[i]) ==true)
-    {
-      // CHANGED if it is true, the box will turn red
-      box[i].currentColor = box[i].insideColor;
-    } else
-    {
-      // CHANGED if not, the box will remain green
-      box[i].currentColor = box[i].fillColor;
+
+    // CHANGED display the wave on the screen
+    wave.display();
+
+    //CHANGED made an array of boxes of random heights
+    for (int i = 0; i < box.length; i++) {
+      box[i].display();
+      box[i].update();
+      // CHANGED checks if the height of the wave matches the height of the box
+      if (wave.checkCollision(box[i]) ==true)
+      {
+        // CHANGED if it is true, the box will turn red
+        box[i].currentColor = box[i].insideColor;
+      } else
+      {
+        // CHANGED if not, the box will remain green
+        box[i].currentColor = box[i].fillColor;
+      }
+      box[i].checkIfOffScreen();
     }
+
+    // CHANGED display the two counters
+    hitCounter.display();
+    missCounter.display();
+  } 
+  // CHANGED game will run the code below if gameOver is true
+  else {
+    background(155);
+
+    fill(0);
+    textSize(100);
+    text("Game Over", width/4, height/2);
+
+    fill(0);
+    textSize(100);
+    text("Your Score", width/1.8, height/3);
+
+    fill(60, 110, 60);
+    textSize(150);
+    text(hitCounter.value, width/1.5, height/2);
   }
-  // CHANGED display the two counters
-  hitCounter.display();
-  missCounter.display();
 }
