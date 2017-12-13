@@ -14,38 +14,49 @@ class Box {
 
   float tempWidth;
   float tempHeight;
+  int startInterval;
+  color fillColor = color(0,255,0);
+  color insideColor = color(255,0,0);
+  color currentColor = fillColor;
+  
 
-  //CHANGED added constructor
-  Box(int _x, int _y, int _vx, int _vy, float _tempWidth, float _tempHeight) {
+//////// CONSTRUCTOR ////////
+
+  //CHANGED added constructor of the boxes
+  Box(int _x, int _y, int _vx, int _vy, float _tempWidth, float _tempHeight, int interval) {
     x = _x;
     y = _y;
     vx = _vx;
     vy = _vy;
     tempWidth = _tempWidth;
     tempHeight = _tempHeight;
+    startInterval= interval;
   }
 
-  //  void setup() {
-  //  }
+
+//////// UPDATE ////////
+
 
   void update() {
-
-    //CHANGED the box will regenerate once every second
-    //frameRate(1);
-
-    // CHANGED trying to make the boxes move across the screen from left to right
-    // I know this is definitely not right..
-
-    for (int i = 0; i <= width; i++) {
-      vx++;
+    
+    // CHANGED checks if the amount of seconds accumulated from the open program is larger than the startInterval (10 seconds)
+    if(millis()>startInterval)
+    {
+      // CHANGED the boxes will start moving at the velocity of 50 pixels per second
+      vx=50;
     }
+      x = x+vx;
   }
+  
+
+//////// DISPLAY ////////
+
 
   void display() {
 
     //CHANGED the box will be transparent, only the borders will show on the screen
     noFill();
-    stroke(0, 255, 0);
+    stroke(currentColor);
     //CHANGED the rectangle will appear in the middle of the screen
     rectMode(CENTER);
     rect(x, y, tempWidth, tempHeight);
