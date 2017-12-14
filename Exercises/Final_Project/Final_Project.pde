@@ -1,8 +1,31 @@
 // Used a starter code from https://ideone.com/iYhvdW
-// stars modified from https://cs.brynmawr.edu/gxk2013/examples/transformations/starfield/
+// Stars modified from https://cs.brynmawr.edu/gxk2013/examples/transformations/starfield/
 // This is a game where the player has to control the volume of their voice to match the size of the boxes that appear on the screen
 // The goal of the game is to gain as many points before the player's 5 chances run out
 //
+//
+//
+//
+//
+//
+///////// ARTIST STATEMENT ////////
+//
+//    This past semester, I have learned a lot about programming which has challenged my creativity in a more technological sense. For my final project,
+// I have created a game where the player must use their voice to control the soundwave in the center of the screen, where they would have to match
+// the size of the soundwave to the height of the boxes that appear on the screen. I have used several codes from exterior sources and modified them 
+// to work in my game. While the game is running, the player will see red star-like objects flying towards them. The shape is similar to the shape of 
+// the soundwave in the center, which I belive is to be a very interesting and appealing detail.
+//    In my past exercises, I have reused and recycled one of my old codes, a linear background made of a loop of randomized strokes of different sizes and 
+// greyscale shades. Judging from how frequently I have reused it, I could safely say that this is my favorite piece of code that I have used. My coding
+// and ideas are very simple and unelaborate, making my game easy to play. The simplicity of the game allows me the ability to make the game more difficult
+// to win, or to gain points. I do not like to overwhelm the aesthetic of my codes with colors because I believe that it takes too much of the viewer/player's 
+// attention, unless it is able to coexist with the rest of the game harmoniously. 
+//    It fascinates me how much a person can create using simple coding and beginner's knowledge. I mainly work with experimentation more than concrete ideas so 
+// this project was a bit of a challenge for me, but I eventually built up my code into a funtional and playable game. 
+
+
+
+
 
 
 //////// IMPORT ////////
