@@ -80,6 +80,16 @@ void setup() {
   }
 }
 
+// CHANGED linear background of a loop of random strokes of different sizes and shades (along the greyscale)
+void drawNewBackground() {
+  for (int i = 0; i < width; i++) {
+    float r = random(255);
+    float randomHeight = random(height);
+    stroke(r);
+    line(i, height/2, i, randomHeight);
+  }
+}
+
 //////// DRAW ////////
 
 void draw() {
@@ -126,18 +136,20 @@ void draw() {
   } 
   // CHANGED game will run the code below if gameOver is true
   else {
-    background(155);
+    background(40);
+    drawNewBackground();
 
     fill(0);
-    textSize(100);
-    text("Game Over", width/4, height/2);
+    stroke(255);
+    textSize(200);
+    text("Game Over", width/3, height/2);
 
-    fill(0);
-    textSize(100);
-    text("Your Score", width/1.8, height/3);
+    fill(255, 40, 10);
+    textSize(200);
+    text("Your Score", width/3, height/1.5);
 
-    fill(60, 110, 60);
+    fill(10, 200, 10);
     textSize(150);
-    text(hitCounter.value, width/1.5, height/2);
+    text(hitCounter.value, width/2, height/1.2);
   }
 }

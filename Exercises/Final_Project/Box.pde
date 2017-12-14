@@ -53,7 +53,7 @@ class Box {
       x = x+vx;
     }
   }
-// CHANGED checks if the box goes off the screen
+  // CHANGED checks if the box goes off the screen
   void checkIfOffScreen() {
     // CHANGED checks if the box goes off screen and the box does not come into contact with the wave
     if (x-tempWidth/2 >width && boxHit ==false && boxOffScreen==false) {
@@ -71,7 +71,7 @@ class Box {
 
 
   void display() {
-// CHANGED the code below will run if the box appears on the screen
+    // CHANGED the code below will run if the box appears on the screen
     if (boxOffScreen ==false) {
       //CHANGED the box will be transparent, only the borders will show on the screen
       noFill();

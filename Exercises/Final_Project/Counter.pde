@@ -13,10 +13,10 @@ class Counter {
   int counterColor;
 
 
-//////// CONSTRUCTOR ////////
+  //////// CONSTRUCTOR ////////
 
 
-// CHANGED added a constructor for the counters
+  // CHANGED added a constructor for the counters
   Counter(int newX, int newY, int _counterColor, int _value ) {
     value = _value;
     x = newX;
@@ -25,7 +25,7 @@ class Counter {
   }
 
 
-//////// DISPLAY ////////
+  //////// DISPLAY ////////
 
 
   void display() {
